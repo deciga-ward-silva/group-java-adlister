@@ -17,6 +17,7 @@
                 <label for="description">Description</label>
                 <textarea id="description" name="description" class="form-control" type="text"></textarea>
             </div>
+            <input type="hidden" name="user_id" value="${sessionScope.user.id}"/>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
     </div>
