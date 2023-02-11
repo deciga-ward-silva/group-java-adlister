@@ -29,15 +29,20 @@
     <table class="ads table">
 
         <tr>
-            <th>Ads Title name</th>
+            <th>Title</th>
             <td><c:out value="${ads.title}"></c:out></td>
         </tr>
 
-        <tr>Ads Description</tr>
-        <td><c:out value="${ads.description}"></c:out></td>
+        <tr>
+            <th>Description</th>
+            <td><c:out value="${ads.description}"></c:out></td>
+        </tr>
 
-        <tr>Ads Price</tr>
-        <td><c:out value="${ads.price}"></c:out></td>
+
+        <tr>
+            <th>Price</th>
+            <td><c:out value="${ads.price}"></c:out></td>
+        </tr>
 
 
     </table>
