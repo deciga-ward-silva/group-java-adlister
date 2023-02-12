@@ -3,13 +3,14 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
@@ -19,17 +20,34 @@ public class CreateAdServlet extends HttpServlet {
             return;
         }
         request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-            .forward(request, response);
+                .forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User user = (User) request.getSession().getAttribute("user");
+        String title = request.getParameter("title");
+        String description = request.getParameter("description");
+        List<String> errors = new ArrayList<>();
+
+        if (title == null || title.trim().isEmpty()) {
+            errors.add("Title is required.");
+        }
+        if (description == null || description.trim().isEmpty()) {
+            errors.add("Description is required.");
+        }
+
+        if (errors.isEmpty()) {
+            // Save the Ad to the database
+            User user = (User) request.getSession().getAttribute("user");
         Ad ad = new Ad(
-            Long.parseLong(request.getParameter("user_id")),
-            request.getParameter("title"),
-            request.getParameter("description")
+                user.getId(),
+                title,
+                description
         );
         DaoFactory.getAdsDao().insert(ad);
         response.sendRedirect("/ads");
+    } else {
+            request.getSession().setAttribute("errors", errors);
+            response.sendRedirect("/ads/create");
+        }
     }
 }

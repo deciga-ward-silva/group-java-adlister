@@ -36,6 +36,16 @@ public class MySQLUsersDao implements Users {
 
     @Override
     public Long insert(User user) {
+        // Check if a user with the same username or email already exists
+        User existingUser = findByUsername(user.getUsername());
+        if (existingUser != null) {
+            throw new IllegalArgumentException("A user with the same username already exists.");
+        }
+        existingUser = findByEmail(user.getEmail());
+        if (existingUser != null) {
+            throw new IllegalArgumentException("A user with the same email already exists.");
+        }
+
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -50,6 +60,19 @@ public class MySQLUsersDao implements Users {
             throw new RuntimeException("Error creating new user", e);
         }
     }
+
+
+    public User findByEmail(String email) {
+        String query = "SELECT * FROM users WHERE email = ? LIMIT 1";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, email);
+            return extractUser(stmt.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding a user by email", e);
+        }
+    }
+
 
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {

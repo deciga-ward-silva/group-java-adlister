@@ -4,10 +4,14 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="/ads">Ads-List</a>
         </div>
+<%--        <ul class="nav navbar-nav navbar-right">--%>
+<%--            <li><a href="/login">Login</a></li>--%>
+<%--            <li><a href="/logout">Logout</a></li>--%>
+<%--        </ul>--%>
         <form class="d-flex" role="search">
-            <button class="btn btn-primary" a href="/login" type="submit">Login</button>
-            <button class="btn btn-danger" a href="/logout" type="submit">Logout</button>
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <a href="/login"class="btn btn-primary"  type="submit">Login</a>
+            <a href="/logout" class="btn btn-danger"  type="submit">Logout</a>
+            <input class="form-control me-2" type="search" name="searchTerm" placeholder="Search" aria-label="Search">
             <button class="btn btn-info" type="submit">Search</button>
         </form>
     </div><!-- /.navbar-collapse -->
