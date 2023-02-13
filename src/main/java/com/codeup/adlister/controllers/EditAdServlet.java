@@ -58,7 +58,7 @@ public class EditAdServlet extends HttpServlet {
 
         Ads adsDao = DaoFactory.getAdsDao();
         Ad ad = adsDao.findOne(adId);
-        ad.SetTitle(title);
+        ad.setTitle(title);
         ad.setDescription(description);
         adsDao.update(ad);
 
