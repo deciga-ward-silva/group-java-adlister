@@ -31,4 +31,8 @@ public class UserAdsServlet extends HttpServlet {
         // Send the request to profile.jsp //
         request.getRequestDispatcher("/WEB-INF/ads/all.jsp").forward(request, response);
     }
+
 }
+
+}
+
