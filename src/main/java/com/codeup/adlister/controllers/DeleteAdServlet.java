@@ -30,8 +30,5 @@ public class DeleteAdServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 7218a12e0060644bcd8d4ae22259c7c0e7dff609
+

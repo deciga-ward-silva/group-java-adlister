@@ -34,5 +34,3 @@ public class UserAdsServlet extends HttpServlet {
 
 }
 
-}
-
