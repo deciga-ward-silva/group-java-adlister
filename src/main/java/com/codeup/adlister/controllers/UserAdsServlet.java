@@ -29,7 +29,7 @@ public class UserAdsServlet extends HttpServlet {
         request.setAttribute("allAds", allAds);
 
         // Send the request to profile.jsp //
-        request.getRequestDispatcher("/WEB-INF/ads/all.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
 
 }

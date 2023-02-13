@@ -31,12 +31,14 @@ public class LoginServlet extends HttpServlet {
         }
 
         boolean validAttempt = Password.check(password, user.getPassword());
-
-        if (validAttempt) {
+        String lastPage = (String) request.getSession().getAttribute("last-page");
+        if (validAttempt && lastPage != null) {
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect(lastPage);
+            //MIGHT NEED TO CLEAR ATTRIBUTE AFTER SET
+        } else {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
-        } else {
-            response.sendRedirect("/login");
         }
     }
 }

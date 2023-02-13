@@ -4,20 +4,12 @@
 
 <html>
 <head>
-<<<<<<< HEAD
   <title>Edit Ad</title>
-=======
-    <title>Edit Ad</title>
->>>>>>> 7218a12e0060644bcd8d4ae22259c7c0e7dff609
 </head>
 <body>
-
 <h1>Edit Ad</h1>
-
-
-
 <form action="/ads/edit" method="post">
-<<<<<<< HEAD
+
   <input type="hidden" name="id" value="${ad.id}">
 
   <div>
@@ -35,7 +27,7 @@
 
 </body>
 </html>
-=======
+
     <input type="hidden" name="id" value="${ad.id}">
 
     <div>
@@ -53,4 +45,4 @@
 
 </body>
 </html>
->>>>>>> 7218a12e0060644bcd8d4ae22259c7c0e7dff609
+

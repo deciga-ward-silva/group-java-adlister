@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,16 +39,20 @@ public class CreateAdServlet extends HttpServlet {
         if (errors.isEmpty()) {
             // Save the Ad to the database
             User user = (User) request.getSession().getAttribute("user");
-        Ad ad = new Ad(
-                user.getId(),
-                title,
-                description
-        );
-        DaoFactory.getAdsDao().insert(ad);
-        response.sendRedirect("/ads");
-    } else {
+            Ad ad = new Ad(
+                    user.getId(),
+                    title,
+                    description
+            );
+            System.out.println(user.getId());
+            System.out.println(title);
+            System.out.println(description);
+            DaoFactory.getAdsDao().insert(ad);
+            response.sendRedirect("/ads");
+        } else {
             request.getSession().setAttribute("errors", errors);
             response.sendRedirect("/ads/create");
         }
     }
+
 }

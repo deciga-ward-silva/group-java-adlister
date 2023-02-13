@@ -26,7 +26,7 @@
             session.removeAttribute("errors");
         }
     %>
-    <form action="/ads/create" method="post">
+    <form action="/ads/create" method="POST">
         <div class="form-group">
             <label for="title">Title</label>
             <input id="title" name="title" class="form-control" type="text">
