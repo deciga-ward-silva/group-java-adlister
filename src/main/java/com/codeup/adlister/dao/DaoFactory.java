@@ -18,4 +18,8 @@ public class DaoFactory {
         }
         return usersDao;
     }
+
+    public static Ads getCategoriesDao() {
+        return null;
+    }
 }

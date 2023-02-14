@@ -13,10 +13,13 @@ public class Ad {
         this.description = description;
     }
 
-    public Ad(long  userId, String title, String description) {
+    public Ad(long userId, String title, String description) {
         this.userId = userId;
         this.title = title;
         this.description = description;
+    }
+
+    public Ad(long id, long user_id, String title, String description, String image_url) {
     }
 
     public long getId() {
@@ -51,6 +54,6 @@ public class Ad {
         this.description = description;
     }
 
-//    public void SetTitle(String title) {
-//    }
+    public void SetTitle(String title) {
+    }
 }
