@@ -16,6 +16,8 @@
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/index.jsp">Home</a>
+                        <a class="nav-link active" aria-current="page" href="ads">Ads</a>
+                        <a class="nav-link active" aria-current="page" href="ads/create">Create Ads</a>
                         <form class="d-flex mt-3" role="search">
                             <input class="form-control me-2" type="search" placeholder="Search for Ad" name="searchTerm" aria-label="Search">
                             <button class="btn btn-success" type="submit">Search</button>
