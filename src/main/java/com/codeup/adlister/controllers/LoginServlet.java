@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
+import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,12 +32,15 @@ public class LoginServlet extends HttpServlet {
         }
 
         boolean validAttempt = Password.check(password, user.getPassword());
-
-        if (validAttempt) {
+        String lastPage = (String) request.getSession().getAttribute("last-page");
+        if (validAttempt && lastPage != null ) {
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect(lastPage);
+            //MIGHT NEED TO CLEAR ATTRIBUTE AFTER SET
+        } else {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/profile");
-        } else {
-            response.sendRedirect("/login");
         }
     }
-}
+
+    }

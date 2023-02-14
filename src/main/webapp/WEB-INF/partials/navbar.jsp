@@ -8,7 +8,7 @@
 <%--            <li><a href="/login">Login</a></li>--%>
 <%--            <li><a href="/logout">Logout</a></li>--%>
 <%--        </ul>--%>
-        <form class="d-flex" role="search">
+        <form class="d-flex" role="search" action="/search">
             <a href="/login"class="btn btn-primary"  type="submit">Login</a>
             <a href="/logout" class="btn btn-danger"  type="submit">Logout</a>
             <input class="form-control me-2" type="search" name="searchTerm" placeholder="Search" aria-label="Search">

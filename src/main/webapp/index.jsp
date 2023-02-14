@@ -22,56 +22,59 @@
     <h1>Welcome to the Adlister!</h1>
 </div>
 
-<%--Ads table to display single ad--%>
-<div class="ads container">
-    <h1>Ad Details</h1>
 
-    <table class="ads table">
+<%--I commented all this code out because it's unecsscary--%>
 
-        <tr>
-            <th>Title</th>
-            <td><c:out value="${ads.title}"></c:out></td>
-        </tr>
+<%--&lt;%&ndash;Ads table to display single ad&ndash;%&gt;--%>
+<%--<div class="ads container">--%>
+<%--    <h1>Ad Details</h1>--%>
 
-        <tr>
-            <th>Description</th>
-            <td><c:out value="${ads.description}"></c:out></td>
-        </tr>
+<%--    <table class="ads table">--%>
 
+<%--        <tr>--%>
+<%--            <th>Title</th>--%>
+<%--            <td><c:out value="${ads.title}"></c:out></td>--%>
+<%--        </tr>--%>
 
-        <tr>
-            <th>Price</th>
-            <td><c:out value="${ads.price}"></c:out></td>
-        </tr>
+<%--        <tr>--%>
+<%--            <th>Description</th>--%>
+<%--            <td><c:out value="${ads.description}"></c:out></td>--%>
+<%--        </tr>--%>
 
 
-    </table>
-
-    <%--POTENTIAL EDIT, UPDATE, DELETE FORM FOR FUNCTIONALITY--%>
-
-    <%--Update--%>
-    <form action="updateAd" method="post">
-        <input type="hidden" name="id" value="${ads.id}" />
-        <input type="submit" value="Update Ad"/>
-    </form>
-    <%--Delete--%>
-    <form action="deletedAd" method="post">
-        <input type="hidden" name="id" value="${ad.id}"/>
-        <input type="submit" value="Delete Ad"/>
-    </form>
+<%--        <tr>--%>
+<%--            <th>Price</th>--%>
+<%--            <td><c:out value="${ads.price}"></c:out></td>--%>
+<%--        </tr>--%>
 
 
-    <%--For each was created to display every add within the database.--%>
-    <tbody>
-    <c:forEach items="${ads}" var="ad">
+<%--    </table>--%>
 
-        <tr>
-                <%--For each iteration of the loop, the href will create a different link to access the details of each add. --%>
-            <td><a href="ad?id=${ad.id}"></a></td>
-        </tr>
+<%--    &lt;%&ndash;POTENTIAL EDIT, UPDATE, DELETE FORM FOR FUNCTIONALITY&ndash;%&gt;--%>
 
-    </c:forEach>
-    </tbody>
+<%--    &lt;%&ndash;Update&ndash;%&gt;--%>
+<%--    <form action="updateAd" method="post">--%>
+<%--        <input type="hidden" name="id" value="${ads.id}" />--%>
+<%--        <input type="submit" value="Update Ad"/>--%>
+<%--    </form>--%>
+<%--    &lt;%&ndash;Delete&ndash;%&gt;--%>
+<%--    <form action="deletedAd" method="post">--%>
+<%--        <input type="hidden" name="id" value="${ad.id}"/>--%>
+<%--        <input type="submit" value="Delete Ad"/>--%>
+<%--    </form>--%>
+
+
+<%--    &lt;%&ndash;For each was created to display every add within the database.&ndash;%&gt;--%>
+<%--    <tbody>--%>
+<%--    <c:forEach items="${ads}" var="ad">--%>
+
+<%--        <tr>--%>
+<%--                &lt;%&ndash;For each iteration of the loop, the href will create a different link to access the details of each add. &ndash;%&gt;--%>
+<%--            <td><a href="ad?id=${ad.id}"></a></td>--%>
+<%--        </tr>--%>
+
+<%--    </c:forEach>--%>
+<%--    </tbody>--%>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>

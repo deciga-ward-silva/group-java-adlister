@@ -15,4 +15,12 @@ public interface Ads {
     void update(Ad ad);
 
     void delete(Long adId);
+
+    List <Ad>searchAds(String search);
+
+    List<Ad> findByUserId(Long userId);
+
+    public List<Ad> findByTitle(String title);
+
+
 }

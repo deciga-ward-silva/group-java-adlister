@@ -2,10 +2,6 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,17 +53,69 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Ad findOne(Long adId) {
-        return null;
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM ads where id = ?");
+            ResultSet rs = stmt.executeQuery();
+            stmt.setLong(1, adId);
+            rs.next();
+            return new Ad(
+                    rs.getLong("id"),
+                    rs.getLong("user_id"),
+                    rs.getString("title"),
+                    rs.getString("description")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
     }
+
+
+    // Code We Might Use //
+
+//    @Override
+//    public Ad findOne(Long adId) {
+//        String query = "SELECT * FROM ads WHERE id = ?";
+//        try {
+//            PreparedStatement stmt = connection.prepareStatement(query);
+//            stmt.setLong(1, adId);
+//            ResultSet rs = stmt.executeQuery();
+//            if (rs.next()) {
+//                return extractAd(rs);
+//            }
+//            return null;
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error finding ad with ID: " + adId, e);
+//        }
+//    }
 
     @Override
     public void update(Ad ad) {
+        String query = "UPDATE ads SET title = ?, description = ?, image_url = ? WHERE id = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setString(1, ad.getTitle());
+            stmt.setString(2, ad.getDescription());
 
+//            We might use this code for images. //
+//            stmt.setString(3, ad.getImageUrl());
+            stmt.setLong(4, ad.getId());
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error editing ad", e);
+        }
     }
 
     @Override
     public void delete(Long adId) {
-
+        try {
+            String deleteQuery = "DELETE FROM ads WHERE id = ?";
+            PreparedStatement ps = connection.prepareStatement(deleteQuery);
+            ps.setLong(1, adId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad", e);
+        }
     }
 
     private Ad extractAd(ResultSet rs) throws SQLException {
@@ -87,7 +135,7 @@ public class MySQLAdsDao implements Ads {
         return ads;
     }
 
-    public List<Ad> search(String searchTerm) {
+    public List<Ad> searchAds(String searchTerm) {
         try {
             String searchQuery = "SELECT * FROM ads WHERE title LIKE ? OR description LIKE ?";
             PreparedStatement stmt = connection.prepareStatement(searchQuery);
@@ -100,4 +148,59 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error searching for ads.", e);
         }
     }
+
+    @Override
+    public List<Ad> findByUserId(Long userId) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ads WHERE user_id = ?");
+            stmt.setLong(1, userId);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding ads by user ID: " + userId, e);
+        }
+    }
+
+
+    private List<Ad> generateAds() {
+        List<Ad> ads = new ArrayList<>();
+        ads.add(new Ad(
+                1,
+                1,
+                "playstation for sale",
+                "This is a slightly used playstation"
+        ));
+        ads.add(new Ad(
+                2,
+                1,
+                "Super Nintendo",
+                "Get your game on with this old-school classic!"
+        ));
+        ads.add(new Ad(
+                3,
+                2,
+                "Junior Java Developer Position",
+                "Minimum 7 years of experience required. You will be working in the scripting language for Java, JavaScript"
+        ));
+        ads.add(new Ad(
+                4,
+                2,
+                "JavaScript Developer needed",
+                "Must have strong Java skills"
+        ));
+        return ads;
+    }
+
+    public List<Ad> findByTitle(String title) {
+        try {
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM ads WHERE title LIKE ?");
+            stmt.setString(1, "%" + title + "%");
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding ads by title: " + title, e);
+        }
+    }
+
+
 }
