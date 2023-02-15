@@ -13,32 +13,12 @@
 <body>
 <div class="container">
     <h1>Ads-List</h1>
-
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>rt
-
+            <h2>Title${ad.title}</h2>
+            <p>Description${ad.description}</p>rt
         </div>
     </c:forEach>
-
-<%--    <h1>Edit Ad</h1>--%>
-
-<%--    <form action="/ads/edit" method="post">--%>
-<%--        <input type="hidden" name="id" value="${ad.id}">--%>
-
-<%--        <div>--%>
-<%--            <label>Title:</label>--%>
-<%--            <input type="text" name="title" value="${ad.title}">--%>
-<%--        </div>--%>
-
-<%--        <div>--%>
-<%--            <label>Description</label>--%>
-<%--            <textarea name="description">${ad.description}</textarea>--%>
-<%--        </div>--%>
-
-<%--        <input type="submit" value="Save Changes">--%>
-<%--    </form>--%>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
         integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
