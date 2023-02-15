@@ -21,14 +21,13 @@
 <div class="container">
     <h3>Profile</h3>
     <h1>Welcome, ${sessionScope.user.username}!</h1>
-    <button type="button" class="btn btn-danger">Edit Profile</button>
 </div>
 <body>
 <br>
 <br>
 <br>
+<br>
 <a href="/ads/create" class="btn btn-primary">Create New Ad</a>
-<a href="/ads/delete" class="btn btn-primary">Delete Ad</a>
 <br>
 <div class="container">
     <h1>Ads-List</h1>

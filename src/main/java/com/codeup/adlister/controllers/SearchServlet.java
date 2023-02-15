@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 // This servlet is used to search for ads.
-@WebServlet(name = "controllers.SearchServlet", urlPatterns = "/search")
+@WebServlet(name = "controllers.SearchServlet", urlPatterns = "/ads/search")
 public class SearchServlet extends HttpServlet {
 
     // This method is called when a GET request is made to the "/search" URL.
