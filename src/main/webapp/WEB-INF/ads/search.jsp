@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-  <title>Title</title>
+  <title>Search Ads</title>
 </head>
 <body>
 <h1>Search Results</h1>
@@ -20,3 +20,5 @@
     <div class="alert alert-info">No search result.</div>
   </c:otherwise>
 </c:choose>
+</body>
+</html>
