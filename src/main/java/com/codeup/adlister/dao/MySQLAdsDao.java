@@ -119,7 +119,7 @@ public class MySQLAdsDao implements Ads {
     public void update(Ad ad) {
 
         // Define the SQL query for updating an ad with a new title, description, and image URL
-        String query = "UPDATE ads SET title = ?, description = ?, image_url = ? WHERE id = ?";
+        String query = "UPDATE ads SET title = ?, description = ?,  WHERE id = ?";
 
         try {
             // Prepare the SQL statement with placeholders for the new title, description, and image URL

@@ -28,8 +28,37 @@
 <br>
 <br>
 
+
+
 <a href="/ads/create" class="btn btn-primary">Create New Ad</a>
 <a href="/ads/delete" class="btn btn-primary">Delete Ad</a>
+
+
+
+<br>
+<div class="container">
+    <h1>Update Ad</h1>
+    <form action="/ads/edit" method="post">
+        <div class="form-group">
+            <label for="adId">Select Ad to Edit</label>
+            <select class="form-control" name="adId" id="adId">
+                <option value="">Select an ad</option>
+                <c:forEach var="ad" items="${ads}">
+                    <option value="${ad.id}">${ad.title}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" id="title">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" name="description" id="description"></textarea>
+        </div>
+        <input type="submit" value="Update Ad" class="btn btn-primary">
+    </form>
+</div>
 
 
 
@@ -44,6 +73,8 @@
         </div>
     </c:forEach>
 </div>
+
+
 
 
 

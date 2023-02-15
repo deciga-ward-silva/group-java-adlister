@@ -46,7 +46,7 @@ public class EditAdServlet extends HttpServlet {
         }
 
         // Get the ad ID from the request parameter.
-        Long adId = Long.valueOf(request.getParameter("id"));
+        Long adId = Long.valueOf(request.getParameter("adId"));
 
         // Get the updated ad information from the request.
         String title = request.getParameter("title");
@@ -59,7 +59,11 @@ public class EditAdServlet extends HttpServlet {
         ad.setDescription(description);
         adsDao.update(ad);
 
-        // Redirect the user to the ad detail page.
-        response.sendRedirect("/ads?id=" + adId);
+        // Redirect the user to the profile page.
+        response.sendRedirect("/profile");
     }
+
+
+
+
 }

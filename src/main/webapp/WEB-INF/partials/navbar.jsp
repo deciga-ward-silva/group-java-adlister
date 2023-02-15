@@ -22,8 +22,8 @@
                         <a class="nav-link active" aria-current="page" href="/index.jsp">Home</a>
                         <a class="nav-link active" aria-current="page" href="ads">Ads</a>
                         <a class="nav-link active" aria-current="page" href="ads/create">Create Ads</a>
-                        <a class="nav-link active" aria-current="page" href="register">Register New User</a>
-                        <a class="nav-link active" aria-current="page" href="profile">Profile</a>
+                        <a class="nav-link active" aria-current="page" href="/register">Register New User</a>
+                        <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
                     </li>
                 </ul>
             </div>
