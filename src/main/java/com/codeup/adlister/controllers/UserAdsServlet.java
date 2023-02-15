@@ -15,22 +15,21 @@ import java.util.List;
 @WebServlet(name = "controllers.UserAds", urlPatterns = "/profile/userAds")
 public class UserAdsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Check if the user is logged in //
+        // Check if the user is logged in
         if (request.getSession().getAttribute("user") == null) {
+            // If the user is not logged in, redirect to the login page
             response.sendRedirect("/login");
             return;
         }
 
-        // Get all ads created by the user //
+        // Get all ads created by the user
         Ads adsDao = DaoFactory.getAdsDao();
         List<Ad> allAds = adsDao.all();
 
-        // Set the user's ads as a request attribute //
+        // Set the user's ads as a request attribute
         request.setAttribute("allAds", allAds);
 
-        // Send the request to profile.jsp //
+        // Send the request to all.jsp, which displays all of the user's ads
         request.getRequestDispatcher("/WEB-INF/ads/all.jsp").forward(request, response);
     }
-
 }
-
