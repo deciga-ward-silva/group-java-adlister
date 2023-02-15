@@ -15,8 +15,8 @@
     <h1>Ads-List</h1>
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
-            <h2>Title${ad.title}</h2>
-            <p>Description${ad.description}</p>rt
+            <h2>${ad.title}</h2>
+            <p>${ad.description}</p>
         </div>
     </c:forEach>
 </div>

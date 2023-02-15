@@ -19,7 +19,7 @@
                         <a class="nav-link active" aria-current="page" href="ads">Ads</a>
                         <a class="nav-link active" aria-current="page" href="ads/create">Create Ads</a>
                         <a class="nav-link active" aria-current="page" href="register">Register New User</a>
-                        <a class="nav-link active" aria-current="page" href="ads/search">Ad Search</a>
+                        <a class="nav-link active" aria-current="page" href="/WEB-INF/ads/search">Ad Search</a>
                     </li>
                 </ul>
             </div>

@@ -11,7 +11,5 @@
   <input type="hidden" name="id" value="${ad.id}"/>
   <input type="submit" value="Delete"/>
 </form>
-
 </body>
-
 </html>
