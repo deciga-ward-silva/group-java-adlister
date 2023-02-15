@@ -50,7 +50,7 @@ public class CreateAdServlet extends HttpServlet {
             long adId = DaoFactory.getAdsDao().insert(ad);
             Ad insertedAd = DaoFactory.getAdsDao().findOne(adId);
 
-            // Redirect to the profile page.
+            // Redirect to the profile page. //
             response.sendRedirect(request.getContextPath() + "/profile");
         } else {
             // Handle errors.
