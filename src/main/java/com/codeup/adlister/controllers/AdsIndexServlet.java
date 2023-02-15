@@ -1,9 +1,6 @@
-
-
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,22 +14,11 @@ public class AdsIndexServlet extends HttpServlet {
 
     // This method is called when a GET request is made to the "/ads" URL.
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
+
         // Add the list of all ads to the request attribute "ads"
         request.setAttribute("ads", DaoFactory.getAdsDao().all());
         // Forward the request and response objects to the index JSP page
         request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
     }
-
-
 }
-=======
 
-        // Add the list of all ads to the request attribute "ads".
-        request.setAttribute("ads", DaoFactory.getAdsDao().all());
-
-        // Forward the request and response objects to the index JSP page.
-        request.getRequestDispatcher("/WEB-INF/ads/index.jsp").forward(request, response);
-    }
-}
->>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf

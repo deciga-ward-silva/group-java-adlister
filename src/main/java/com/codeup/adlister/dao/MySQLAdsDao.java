@@ -97,7 +97,7 @@ public class MySQLAdsDao implements Ads {
     }
 
 
-  //   Code We Might Use //
+    //   Code We Might Use //
 
 //    @Override
 //    public Ad findOne(Long adId) {
@@ -142,8 +142,8 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-     // Deletes an ad from the database with the given ID.
-      // @param adId the ID of the ad to be deleted
+    // Deletes an ad from the database with the given ID.
+    // @param adId the ID of the ad to be deleted
     @Override
     public void delete(Long adId) {
         try {
@@ -156,30 +156,12 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-<<<<<<< HEAD
-    @Override
-    public List<Ad> searchAds(String search) {
-        return null;
-    }
-
-    @Override
-    public List<Ad> findByUserId(Long userId) {
-        return null;
-    }
-
-    @Override
-    public List<Ad> findByTitle(String title) {
-        return null;
-    }
-
-=======
-// // This is a private method that extracts a single Ad object from a ResultSet. It is used by other methods in the class that retrieve data from the database.
+    // // This is a private method that extracts a single Ad object from a ResultSet. It is used by other methods in the class that retrieve data from the database.
 //
 //// Extracts a single Ad object from a ResultSet.
 //// This method is used by other methods in the class that retrieve data from the database.
 //// It takes a ResultSet as an argument and returns a new Ad object.
 //// It throws a SQLException if there is an error retrieving the data.
->>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
                 rs.getLong("id"),
@@ -224,8 +206,6 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-<<<<<<< HEAD
-=======
     // findByUserId method to find all ads associated with a given user ID
     @Override
     public List<Ad> findByUserId(Long userId) {
@@ -286,6 +266,4 @@ public class MySQLAdsDao implements Ads {
     }
 
 
->>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf
 }
-

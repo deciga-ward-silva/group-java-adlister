@@ -15,7 +15,6 @@ import java.util.List;
 @WebServlet(name = "controller.ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
         // Get the currently logged-in user
         User user = (User) request.getSession().getAttribute("user");
 
@@ -30,19 +29,3 @@ public class ViewProfileServlet extends HttpServlet {
     }
 
 }
-=======
-            // Get the currently logged-in user
-            User user = (User) request.getSession().getAttribute("user");
-
-            // Retrieve the ads for the current user
-            List<Ad> ads = DaoFactory.getAdsDao().findByUserId(user.getId());
-
-            // Add the ads as an attribute to the request object
-            request.setAttribute("ads", ads);
-
-            // Forward the request to the profile.jsp file
-            request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
-        }
-
-    }
->>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf

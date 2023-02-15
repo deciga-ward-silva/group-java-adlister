@@ -46,16 +46,6 @@ public class CreateAdServlet extends HttpServlet {
         if (errors.isEmpty()) {
             // Create the ad in the database.
             User user = (User) request.getSession().getAttribute("user");
-<<<<<<< HEAD
-            Ad ad = new Ad(
-                    user.getId(),
-                    title,
-                    description
-            );
-            DaoFactory.getAdsDao().insert(ad);
-            response.sendRedirect("/ads");
-        } else {
-=======
             Ad ad = new Ad(user.getId(), title, description);
             long adId = DaoFactory.getAdsDao().insert(ad);
             Ad insertedAd = DaoFactory.getAdsDao().findOne(adId);
@@ -64,7 +54,6 @@ public class CreateAdServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/profile");
         } else {
             // Handle errors.
->>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf
             request.getSession().setAttribute("errors", errors);
             response.sendRedirect(request.getContextPath() + "/ads/create");
         }

@@ -22,11 +22,7 @@ public class DaoFactory {
     }
 
     // Get the Categories DAO instance (not implemented)
-    public static Ads getCategoriesDao() {
-        return null;
+//    public static Ads getCategoriesDao() {
+//        return null;
     }
 
-    public static Ads getCategoriesDao() {
-        return null;
-    }
-}

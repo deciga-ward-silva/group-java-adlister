@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
 // This servlet is used to redirect the user to a specified URL.
 @WebServlet(name = "controllers.IntendedRedirectServlet", urlPatterns = "/redirect")
 public class IntendedRedirectServlet extends HttpServlet {

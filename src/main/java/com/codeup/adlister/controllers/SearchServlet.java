@@ -11,15 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-<<<<<<< HEAD
-@WebServlet(name = "controllers.SearchServlet", urlPatterns = "/search")
-public class SearchServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String searchTerm = request.getParameter("searchTerm");
-        List<Ad> ads = DaoFactory.getAdsDao().searchAds(searchTerm);
-=======
 // This servlet is used to search for ads.
 @WebServlet(name = "controllers.SearchServlet", urlPatterns = "/search")
 public class SearchServlet extends HttpServlet {
@@ -34,7 +25,6 @@ public class SearchServlet extends HttpServlet {
         List<Ad> ads = DaoFactory.getAdsDao().searchAds(searchTerm);
 
         // If no matching ads are found, set an error message. Otherwise, set the first ad in the list as a request attribute.
->>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf
         if (ads.isEmpty()) {
             String errorMessage = "Search result not found. Please try again.";
             request.setAttribute("errorMessage", errorMessage);
@@ -42,18 +32,8 @@ public class SearchServlet extends HttpServlet {
             Ad ad = ads.get(0);
             request.setAttribute("ad", ad);
         }
-<<<<<<< HEAD
-        request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
-
-
-
-
-    }
-}
-=======
 
         // Forward the request and response objects to the search JSP page.
         request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
     }
 }
->>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf
