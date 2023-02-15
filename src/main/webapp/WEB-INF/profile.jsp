@@ -7,9 +7,15 @@
         <jsp:param name="title" value="Please Log In" />
     </jsp:include>
     <jsp:include page="/WEB-INF/partials/navbar.jsp" />
-    <h3>Profile</h3>
 </head>
+
+<br>
+<br>
+<br>
+<br>
+<br>
     <div class="container">
+        <h3>Profile</h3>
         <h1>Welcome, ${sessionScope.user.username}!</h1>
         <button type="button" class="btn btn-danger">Edit Profile</button>
     </div>
