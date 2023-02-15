@@ -23,13 +23,11 @@ public class CreateAdServlet extends HttpServlet {
                 .forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // get the ad details from the form
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
-
-        // validate the ad details
         List<String> errors = new ArrayList<>();
+
         if (title == null || title.trim().isEmpty()) {
             errors.add("Title is required.");
         }
@@ -38,19 +36,18 @@ public class CreateAdServlet extends HttpServlet {
         }
 
         if (errors.isEmpty()) {
-            // create the ad in the database
+            // Save the Ad to the database
             User user = (User) request.getSession().getAttribute("user");
-            Ad ad = new Ad(user.getId(), title, description);
-            long adId = DaoFactory.getAdsDao().insert(ad);
-            Ad insertedAd = DaoFactory.getAdsDao().findOne(adId);
-
-            // redirect to the profile page
-            response.sendRedirect(request.getContextPath() + "/profile");
+            Ad ad = new Ad(
+                    user.getId(),
+                    title,
+                    description
+            );
+            DaoFactory.getAdsDao().insert(ad);
+            response.sendRedirect("/ads");
         } else {
-            // handle errors
             request.getSession().setAttribute("errors", errors);
-            response.sendRedirect(request.getContextPath() + "/ads/create");
+            response.sendRedirect("/ads/create");
         }
     }
-
 }
