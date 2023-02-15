@@ -8,6 +8,12 @@
 </head>
 <body>
     <jsp:include page="partials/navbar.jsp" />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="container">
         <h1>Please fill in your information.</h1>
         <form action="/register" method="post">

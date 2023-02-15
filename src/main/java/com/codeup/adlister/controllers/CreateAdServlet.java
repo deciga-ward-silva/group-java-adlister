@@ -3,6 +3,7 @@ package com.codeup.adlister.controllers;
 import com.codeup.adlister.dao.DaoFactory;
 import com.codeup.adlister.models.Ad;
 import com.codeup.adlister.models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,22 +13,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+// This line maps the CreateAdServlet class to the "/ads/create" URL.
 @WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/create")
 public class CreateAdServlet extends HttpServlet {
+
+    // This method is called when a GET request is made to the "/ads/create" URL.
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // If the user is not logged in, redirect to the login page.
         if (request.getSession().getAttribute("user") == null) {
             response.sendRedirect("/login");
             return;
         }
-        request.getRequestDispatcher("/WEB-INF/ads/create.jsp")
-                .forward(request, response);
+        // Otherwise, forward the request and response objects to the create.jsp page.
+        request.getRequestDispatcher("/WEB-INF/ads/create.jsp").forward(request, response);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // This method is called when a POST request is made to the "/ads/create" URL.
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // Get the ad details from the form.
         String title = request.getParameter("title");
         String description = request.getParameter("description");
-        List<String> errors = new ArrayList<>();
 
+        // Validate the ad details and add any errors to a list.
+        List<String> errors = new ArrayList<>();
         if (title == null || title.trim().isEmpty()) {
             errors.add("Title is required.");
         }
@@ -36,8 +44,9 @@ public class CreateAdServlet extends HttpServlet {
         }
 
         if (errors.isEmpty()) {
-            // Save the Ad to the database
+            // Create the ad in the database.
             User user = (User) request.getSession().getAttribute("user");
+<<<<<<< HEAD
             Ad ad = new Ad(
                     user.getId(),
                     title,
@@ -46,8 +55,18 @@ public class CreateAdServlet extends HttpServlet {
             DaoFactory.getAdsDao().insert(ad);
             response.sendRedirect("/ads");
         } else {
+=======
+            Ad ad = new Ad(user.getId(), title, description);
+            long adId = DaoFactory.getAdsDao().insert(ad);
+            Ad insertedAd = DaoFactory.getAdsDao().findOne(adId);
+
+            // Redirect to the profile page. //
+            response.sendRedirect(request.getContextPath() + "/profile");
+        } else {
+            // Handle errors.
+>>>>>>> b446132f5392a265bf79f78d0744ca0799297fbf
             request.getSession().setAttribute("errors", errors);
-            response.sendRedirect("/ads/create");
+            response.sendRedirect(request.getContextPath() + "/ads/create");
         }
     }
 }

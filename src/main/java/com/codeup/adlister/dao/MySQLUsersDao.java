@@ -10,18 +10,22 @@ public class MySQLUsersDao implements Users {
 
     public MySQLUsersDao(Config config) {
         try {
+            // Register the MySQL driver
             DriverManager.registerDriver(new Driver());
+
+            // Establish a connection to the database using the provided config object
             connection = DriverManager.getConnection(
                     config.getUrl(),
                     config.getUser(),
                     config.getPassword()
             );
         } catch (SQLException e) {
+            // If there's an error connecting to the database, throw a runtime exception
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
 
-
+    // Find a user by their username
     @Override
     public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
@@ -34,6 +38,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
+    // Insert a new user into the database
     @Override
     public Long insert(User user) {
         // Check if a user with the same username or email already exists
@@ -61,7 +66,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-
+    // Find a user by their email
     public User findByEmail(String email) {
         String query = "SELECT * FROM users WHERE email = ? LIMIT 1";
         try {
@@ -73,7 +78,7 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-
+    // Helper method to extract a User object from a ResultSet
     private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
@@ -85,5 +90,4 @@ public class MySQLUsersDao implements Users {
                 rs.getString("password")
         );
     }
-
 }
